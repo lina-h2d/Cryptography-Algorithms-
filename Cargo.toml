@@ -1,0 +1,15 @@
+[package]
+name = "classical_ciphers"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+modinverse = "0.1.1"
+num = "0.4.3"
+rand = "0.8.5"
+hex = "0.4"
+num-bigint = { version = "0.4.6", features = ["rand"] }
+num-traits = "0.2.19"
+miller_rabin = "1.1.1"
+lazy_static = "1.5.0"
+sha2 = "0.10.9"

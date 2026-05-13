@@ -1,0 +1,42 @@
+RC4 Cipher - Kifach Yekhdem
+============================
+
+RC4 houwa waḥed l’stream cipher — ya3ni ykhdem byte b byte, w symmetric,
+kifach yemchi : tdir XOR bin input w waḥed l’keystream li ykoun random.
+
+Encryption w decryption homa nafs l’opération .
+
+---
+
+1. KSA (Key Scheduling Algorithm):
+----------------------------------
+Awel ḥaja, ndir array S men 0 l 255. 
+Just [0, 1, 2, ..., 255] — 256 value fiha.
+
+omba3d ndir une boucle 3la kol position fiha, 
+w nrempli j b formule: j = (j + S[i] + key[i mod len]) % 256.
+
+Kol mara nswapi S[i] m3a S[j] — hadi li tkhltlna l’state b l’key.
+
+---
+
+2. PRGA (Pseudo-Random Generation):
+------------------------------------
+
+Ndir deux variables i w j, ybdaw mn 0.
+Kol mara nzid fihom, nswap S[i] w S[j] (again),
+omba3d nkharej index jdida t = (S[i] + S[j]) % 256.
+
+Nedo S[t] — hada howa byte mn l’keystream. 
+dok nXORiwah m3a l’plaintext/ciphertext, nel9aw resultat.
+
+---
+
+3. Exemple :
+-----------------------
+Key:        "Key" → [0x4B, 0x65, 0x79]
+Plaintext:  "Plaintext"
+Ciphertext: rc4(key, plaintext) = "BBF316E8D940AF0AD3"
+Decrypting: rc4(key, ciphertext) → resultat = "Plaintext"
+
+---
